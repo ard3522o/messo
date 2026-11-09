@@ -29,3 +29,9 @@ To update, pull the new source and run `docker compose up -d --build`. Back up t
 - MongoDB is only reachable on the Compose network; do not publish its port.
 - Payment collection is disabled until a payment provider is configured.
 - For multi-instance/cloud deployments, use managed MongoDB and durable object storage for uploads.
+
+## Deploy the frontend on Vercel
+
+This repository is a monorepo. In Vercel, set the project **Root Directory** to `frontend` and keep **Include files outside the Root Directory** disabled. Vercel should detect Vite, run `npm run build`, and publish `dist`. `frontend/vercel.json` rewrites browser routes to the SPA entry point. If you keep the Vercel Root Directory at the repository root, the root `vercel.json` builds `frontend` and publishes `frontend/dist` instead.
+
+The Express API is a separate service; this frontend deployment does not run it as a Vercel Function. Add `VITE_API_URL` in Vercel’s project environment variables with the public API base URL ending in `/api` (for example, `https://your-api.example.com/api`), then redeploy. Set the API service’s `CLIENT_URL` to the Vercel site origin so its production CORS policy allows the browser app. Without a public API URL, the static site can load, but sign-in and API-backed screens cannot connect.
