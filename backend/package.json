@@ -1,0 +1,39 @@
+{
+  "name": "mess-mgmt-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Smart Mess Management System - REST API",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "seed": "node src/seed/seed.js",
+    "seed:destroy": "node src/seed/seed.js --destroy",
+    "seed:demo": "node src/seed/demoAccounts.js",
+    "seed:demo:reset": "node src/seed/demoAccounts.js --reset-passwords"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.4.1",
+    "express-validator": "^7.2.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "pdfkit": "^0.15.2",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^10.1.3",
+    "nodemon": "^3.1.9"
+  },
+  "allowScripts": {
+    "mongodb-memory-server@10.4.3": true
+  }
+}
